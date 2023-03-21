@@ -1,3 +1,6 @@
+import Link from 'next/link'
+import Image from 'next/image'
+
 import { styled } from '@/styles/stitches.config'
 
 export const Container = styled('header', {
@@ -18,6 +21,14 @@ export const Wrapper = styled('div', {
   padding: '0 1.5rem',
 })
 
+export const HomeAnchor = styled(Link, {
+  outline: 'none',
+})
+
+export const LogoImage = styled(Image, {
+  userSelect: 'none',
+})
+
 export const CartButton = styled('button', {
   padding: '0.75rem',
   lineHeight: '0',
@@ -28,9 +39,15 @@ export const CartButton = styled('button', {
   color: '$gray300',
   backgroundColor: '$gray800',
 
-  transition: 'background-color 0.2s',
+  cursor: 'pointer',
+  outlineColor: 'transparent',
+  transition: 'background-color 0.2s, outline-color 0.2s',
 
   '&:hover': {
     backgroundColor: '$gray700',
+  },
+
+  '&:focus-visible': {
+    outline: '1px solid $green400',
   },
 })
