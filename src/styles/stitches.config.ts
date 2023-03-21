@@ -8,6 +8,7 @@ export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme
       gray100: '#E1E1E6',
       gray200: '#C4C4CC',
       gray300: '#8D8D99',
+      gray700: '#2f2f34',
       gray800: '#202024',
       gray900: '#121214',
 
