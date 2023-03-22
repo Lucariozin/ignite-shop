@@ -1,8 +1,8 @@
 'use client'
 
-import { Handbag } from 'phosphor-react'
+import { CartButton } from '@/components/CartButton'
 
-import { Container, Wrapper, CartButton, LogoImage, HomeAnchor } from './Header.styles'
+import { Container, Wrapper, LogoImage, HomeAnchor } from './Header.styles'
 
 export const Header = () => {
   return (
@@ -12,9 +12,7 @@ export const Header = () => {
           <LogoImage src="/assets/ignite-shop-logo.svg" width={130} height={52} alt="" priority={true} />
         </HomeAnchor>
 
-        <CartButton>
-          <Handbag size={24} weight="bold" />
-        </CartButton>
+        <CartButton />
       </Wrapper>
     </Container>
   )

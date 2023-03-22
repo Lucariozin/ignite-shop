@@ -28,26 +28,3 @@ export const HomeAnchor = styled(Link, {
 export const LogoImage = styled(Image, {
   userSelect: 'none',
 })
-
-export const CartButton = styled('button', {
-  padding: '0.75rem',
-  lineHeight: '0',
-
-  border: 'none',
-  borderRadius: '6px',
-
-  color: '$gray300',
-  backgroundColor: '$gray800',
-
-  cursor: 'pointer',
-  outlineColor: 'transparent',
-  transition: 'background-color 0.2s, outline-color 0.2s',
-
-  '&:hover': {
-    backgroundColor: '$gray700',
-  },
-
-  '&:focus-visible': {
-    outline: '1px solid $green400',
-  },
-})

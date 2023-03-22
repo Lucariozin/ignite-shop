@@ -11,8 +11,9 @@ export const ProductsList = styled('div', {
 })
 
 const BaseNavigationButton = styled('button', {
-  position: 'absolute',
-  top: 'calc((100% / 2) - 1rem)',
+  position: 'fixed',
+  top: 'calc(50% - 1rem)',
+  zIndex: '3',
 
   color: '$gray200',
 
@@ -29,11 +30,11 @@ const BaseNavigationButton = styled('button', {
 })
 
 export const GoForward = styled(BaseNavigationButton, {
-  right: '1rem',
+  right: '0.5rem',
 })
 
 export const GoBack = styled(BaseNavigationButton, {
-  left: '1rem',
+  left: '0.5rem',
 })
 
 export const Carousel = styled('div', {
@@ -45,11 +46,4 @@ export const Carousel = styled('div', {
   '@media (max-width: 1216px)': {
     marginLeft: '0',
   },
-})
-
-export const Product = styled('div', {
-  minWidth: '43.5rem',
-  height: '41rem',
-
-  backgroundColor: 'red',
 })

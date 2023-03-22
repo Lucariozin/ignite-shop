@@ -2,7 +2,9 @@
 
 import { CaretLeft, CaretRight } from 'phosphor-react'
 
-import { Carousel, Product, ProductsList, GoForward, GoBack } from './styles'
+import { Product } from '@/components/Product'
+
+import { Carousel, ProductsList, GoForward, GoBack } from './styles'
 
 const Home = () => {
   return (
@@ -12,9 +14,9 @@ const Home = () => {
       </GoBack>
 
       <Carousel>
-        <Product></Product>
-        <Product></Product>
-        <Product></Product>
+        <Product />
+        <Product />
+        <Product />
       </Carousel>
 
       <GoForward title="Ver os próximos produtos">
