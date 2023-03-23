@@ -1,6 +1,6 @@
 import { styled } from '@/styles/stitches.config'
 
-export const ProductsList = styled('div', {
+export const Carousel = styled('div', {
   position: 'relative',
 
   overflowX: 'scroll',
@@ -37,7 +37,7 @@ export const GoBack = styled(BaseNavigationButton, {
   left: '0.5rem',
 })
 
-export const Carousel = styled('div', {
+export const ProductList = styled('div', {
   display: 'flex',
   gap: '3rem',
 
