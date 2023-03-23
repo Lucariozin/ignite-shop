@@ -12,9 +12,10 @@ const Home = () => {
   const productsCarouselRef = useRef() as RefObject<HTMLDivElement>
 
   const itemsQuantity = 15
-  const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
 
   const handlePassTheCarousel = () => {
+    const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
+
     productsCarouselRef.current?.scrollBy({
       left: productElementWidth,
       behavior: 'smooth',
@@ -22,6 +23,8 @@ const Home = () => {
   }
 
   const handleGoBackTheCarousel = () => {
+    const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
+
     productsCarouselRef.current?.scrollBy({
       left: productElementWidth * -1,
       behavior: 'smooth',

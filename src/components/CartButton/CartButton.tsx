@@ -13,6 +13,11 @@ export const CartButton = styled('button', {
   outlineColor: 'transparent',
   transition: 'background-color 0.2s, outline-color 0.2s',
 
+  '&:focus-visible': {
+    outline: '1px solid $green400',
+    outlineOffset: '2px',
+  },
+
   variants: {
     size: {
       medium: {
@@ -33,33 +38,27 @@ export const CartButton = styled('button', {
         color: '$gray300',
         backgroundColor: '$gray800',
 
-        '&:hover': {
+        '&:hover, &:focus-visible': {
           backgroundColor: '$gray700',
-        },
-
-        '&:focus-visible': {
-          outline: '1px solid $green400',
         },
       },
       green: {
         color: '$white',
         backgroundColor: '$green500',
 
-        '&:hover': {
+        '&:hover, &:focus-visible': {
           backgroundColor: '$green400',
-        },
-
-        '&:focus-visible': {
-          outline: '1px solid $white',
         },
       },
     },
   },
+
+  defaultVariants: {
+    size: 'medium',
+    color: 'gray',
+  },
 })
 
 CartButton.defaultProps = {
-  size: 'medium',
-  color: 'gray',
-
   children: <Handbag weight="bold" />,
 }
