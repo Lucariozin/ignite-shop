@@ -4,14 +4,20 @@ import { RefObject, useRef } from 'react'
 
 import { CaretLeft, CaretRight } from 'phosphor-react'
 
+import type { Product as ProductType } from '@/services/api'
+
 import { Product } from '@/components/Product'
 
 import { Container, Carousel, ProductList, GoForward, GoBack, LeftShadow, RightShadow } from './HomeLayout.styles'
 
-export const HomeLayout = () => {
+interface HomeLayoutProps {
+  products: ProductType[]
+}
+
+export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
   const productsCarouselRef = useRef() as RefObject<HTMLDivElement>
 
-  const itemsQuantity = 15
+  const itemsQuantity = products.length
 
   const handlePassTheCarousel = () => {
     const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
@@ -41,21 +47,9 @@ export const HomeLayout = () => {
         </LeftShadow>
 
         <ProductList>
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {products.map(({ id, name, price, image }) => (
+            <Product key={id} id={id} name={name} price={price} image={image} />
+          ))}
         </ProductList>
 
         <RightShadow>
