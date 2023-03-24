@@ -4,10 +4,9 @@ import { Roboto } from 'next/font/google'
 
 import { globalStyles } from '@/styles/global'
 import { getCssText } from '@/styles/stitches.config'
-
 import { StyleSheet } from '@/styles/StyleSheet'
 
-import { DefaultLayout } from '@/layouts/DefaultLayout'
+import { Header } from '@/components/Header'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -27,7 +26,9 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       </head>
 
       <body>
-        <DefaultLayout>{children}</DefaultLayout>
+        <Header />
+
+        {children}
       </body>
     </html>
   )
