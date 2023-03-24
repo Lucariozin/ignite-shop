@@ -6,7 +6,7 @@ import { CaretLeft, CaretRight } from 'phosphor-react'
 
 import { Product } from '@/components/Product'
 
-import { Carousel, ProductList, GoForward, GoBack } from './styles'
+import { Carousel, ProductList, GoForward, GoBack, LeftShadow, RightShadow } from './styles'
 
 const Home = () => {
   const productsCarouselRef = useRef() as RefObject<HTMLDivElement>
@@ -33,9 +33,11 @@ const Home = () => {
 
   return (
     <Carousel ref={productsCarouselRef}>
-      <GoBack title="Ver os produtos anteriores" onClick={handleGoBackTheCarousel}>
-        <CaretLeft size={52} />
-      </GoBack>
+      <LeftShadow>
+        <GoBack title="Ver os produtos anteriores" onClick={handleGoBackTheCarousel}>
+          <CaretLeft size={52} />
+        </GoBack>
+      </LeftShadow>
 
       <ProductList>
         <Product />
@@ -55,9 +57,11 @@ const Home = () => {
         <Product />
       </ProductList>
 
-      <GoForward title="Ver os próximos produtos" onClick={handlePassTheCarousel}>
-        <CaretRight size={52} />
-      </GoForward>
+      <RightShadow>
+        <GoForward title="Ver os próximos produtos" onClick={handlePassTheCarousel}>
+          <CaretRight size={52} />
+        </GoForward>
+      </RightShadow>
     </Carousel>
   )
 }

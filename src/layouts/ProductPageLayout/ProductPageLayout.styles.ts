@@ -2,7 +2,7 @@ import { styled } from '@/styles/stitches.config'
 
 export const Container = styled('main', {
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr',
+  gridTemplateColumns: '1.1fr 1fr',
   gap: '4.5rem',
 
   maxWidth: '73rem',
