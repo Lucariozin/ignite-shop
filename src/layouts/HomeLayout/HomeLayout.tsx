@@ -1,26 +1,40 @@
 'use client'
 
-import { RefObject, useRef } from 'react'
-
-import { CaretLeft, CaretRight } from 'phosphor-react'
+import { RefObject, useRef, useState } from 'react'
 
 import type { Product as ProductType } from '@/services/api'
 
 import { Product } from '@/components/Product'
+import { CarouselNavigationButton } from './components/CarouselNavigationButton'
 
-import { Container, Carousel, ProductList, GoForward, GoBack, LeftShadow, RightShadow } from './HomeLayout.styles'
+import { Container, Carousel, ProductList } from './HomeLayout.styles'
 
 interface HomeLayoutProps {
   products: ProductType[]
 }
 
 export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
+  const screenWidth = window?.screen?.width ?? 0
+
+  const [carouselPassedAmount, setCarouselPassedAmount] = useState(screenWidth)
+
   const productsCarouselRef = useRef() as RefObject<HTMLDivElement>
 
   const itemsQuantity = products.length
 
-  const handlePassTheCarousel = () => {
+  const getCasouselLength = () => productsCarouselRef.current?.scrollWidth ?? 0
+
+  const handleGoToTheCarouselRight = () => {
     const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
+
+    setCarouselPassedAmount((state) => {
+      const newState = state + productElementWidth
+      const carouselWidth = productsCarouselRef.current?.scrollWidth ?? 0
+
+      if (newState > carouselWidth) return carouselWidth
+
+      return newState
+    })
 
     productsCarouselRef.current?.scrollBy({
       left: productElementWidth,
@@ -28,8 +42,16 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
     })
   }
 
-  const handleGoBackTheCarousel = () => {
+  const handleGoToTheCarouselLeft = () => {
     const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
+
+    setCarouselPassedAmount((state) => {
+      const newState = state - productElementWidth
+
+      if (newState < screenWidth) return screenWidth
+
+      return newState
+    })
 
     productsCarouselRef.current?.scrollBy({
       left: productElementWidth * -1,
@@ -39,12 +61,13 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
 
   return (
     <Container>
-      <Carousel ref={productsCarouselRef}>
-        <LeftShadow>
-          <GoBack title="Ver os produtos anteriores" onClick={handleGoBackTheCarousel}>
-            <CaretLeft size={52} />
-          </GoBack>
-        </LeftShadow>
+      <Carousel ref={productsCarouselRef} onScroll={(event) => event.preventDefault()}>
+        <CarouselNavigationButton
+          direction="left"
+          title="Ver os produtos anteriores"
+          onClick={handleGoToTheCarouselLeft}
+          isVisible={carouselPassedAmount !== screenWidth}
+        />
 
         <ProductList>
           {products.map(({ id, name, price, image }) => (
@@ -52,11 +75,12 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
           ))}
         </ProductList>
 
-        <RightShadow>
-          <GoForward title="Ver os próximos produtos" onClick={handlePassTheCarousel}>
-            <CaretRight size={52} />
-          </GoForward>
-        </RightShadow>
+        <CarouselNavigationButton
+          direction="right"
+          title="Ver os próximos produtos"
+          onClick={handleGoToTheCarouselRight}
+          isVisible={carouselPassedAmount !== getCasouselLength()}
+        />
       </Carousel>
     </Container>
   )
