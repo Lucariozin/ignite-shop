@@ -9,7 +9,7 @@ export const Header = () => {
     <Container>
       <Wrapper>
         <HomeAnchor href="/">
-          <LogoImage src="/assets/ignite-shop-logo.svg" width={130} height={52} alt="" priority={true} />
+          <LogoImage src="/assets/ignite-shop-logo.svg" width={130} height={52} alt="" priority />
         </HomeAnchor>
 
         <CartButton />

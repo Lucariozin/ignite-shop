@@ -3,6 +3,7 @@
 import {
   Name,
   Price,
+  Wrapper,
   Container,
   LeftColumn,
   Description,
@@ -13,31 +14,41 @@ import {
 } from './ProductPageLayout.styles'
 
 interface ProductPageLayoutProps {
-  productId: string
+  id: string
+  name: string
+  price: number
+  image: string
+  description: string
 }
 
-export const ProductPageLayout = ({ productId }: ProductPageLayoutProps) => {
+export const ProductPageLayout = ({
+  id = '',
+  name = '',
+  price = 0,
+  image = '',
+  description = '',
+}: ProductPageLayoutProps) => {
+  const formattedPrice = (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
   return (
     <Container>
-      <LeftColumn>
-        <ProductImage />
-      </LeftColumn>
+      <Wrapper>
+        <LeftColumn>
+          <ProductImage style={{ backgroundImage: `url("${image}")` }} />
+        </LeftColumn>
 
-      <RightColumn>
-        <ProductDetails>
-          <Name>Camiseta Beyond the Limits</Name>
+        <RightColumn>
+          <ProductDetails>
+            <Name>{name}</Name>
 
-          <Price>R$ 79,90</Price>
+            <Price>{formattedPrice}</Price>
 
-          <Description>
-            Tempus fermentum eget lacus, quis ante. Potenti sit pharetra, ridiculus amet. Bibendum pretium arcu arcu
-            eget viverra at metus donec hendrerit. Rhoncus, nunc, eu at ac. At massa, fermentum amet ornare cras
-            tincidunt nunc tincidunt. Netus lorem nulla nulla mattis integer velit dictum proin nibh.
-          </Description>
-        </ProductDetails>
+            <Description>{description}</Description>
+          </ProductDetails>
 
-        <AddProductToCartButton>Colocar na sacola</AddProductToCartButton>
-      </RightColumn>
+          <AddProductToCartButton>Colocar na sacola</AddProductToCartButton>
+        </RightColumn>
+      </Wrapper>
     </Container>
   )
 }

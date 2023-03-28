@@ -1,6 +1,15 @@
 import { styled } from '@/styles/stitches.config'
 
-export const Container = styled('main', {
+export const Container = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+
+  minHeight: 'calc(100vh - 14rem)',
+
+  padding: '0 1.5rem',
+})
+
+export const Wrapper = styled('main', {
   display: 'grid',
   gridTemplateColumns: '1.1fr 1fr',
   gap: '4.5rem',
@@ -21,7 +30,6 @@ export const ProductImage = styled('div', {
   width: '100%',
   height: '100%',
 
-  backgroundImage: 'url("/assets/t-shirt-01.png")',
   backgroundPosition: 'center',
   backgroundSize: 'cover',
 })
