@@ -56,7 +56,7 @@ export const GoForward = styled(BaseNavigationButton, {
 
 export const LeftShadow = styled('div', {
   position: 'fixed',
-  zIndex: '6',
+  zIndex: '1',
   left: '0',
   top: 'calc((100vh - 48.5rem) / 2 + 2rem)',
 

@@ -30,8 +30,6 @@ export const Container = styled('div', {
   minWidth: '43.5rem',
   height: '41rem',
 
-  padding: '5.5rem',
-
   borderRadius: '8px',
   backgroundImage: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
 
@@ -48,8 +46,11 @@ export const ProductImageContainer = styled('div', {
   width: '100%',
   height: '100%',
 
-  backgroundPosition: 'center',
-  backgroundSize: 'cover',
+  padding: '5.5rem',
+
+  '& > img': {
+    userSelect: 'none',
+  },
 })
 
 export const Details = styled('div', {

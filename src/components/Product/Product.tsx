@@ -1,3 +1,7 @@
+import Image from 'next/image'
+
+import { useRouter } from 'next/navigation'
+
 import { CartButton } from '@/components/CartButton'
 
 import { Container, Details, Name, Price, ProductDetails, ProductImageContainer } from './Product.styles'
@@ -10,11 +14,17 @@ interface ProductProps {
 }
 
 export const Product = ({ id = '', name = '', price = 0, image = '' }: ProductProps) => {
-  const formattedPrice = (price / 100).toLocaleString('pr-BR', { style: 'currency', currency: 'BRL' })
+  const router = useRouter()
+
+  const formattedPrice = (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
+  const handleProductClick = () => router.push(`/products/${id}`)
 
   return (
     <Container>
-      <ProductImageContainer style={{ backgroundImage: `url("${image}")` }} />
+      <ProductImageContainer onClick={handleProductClick}>
+        <Image src={image} width={520} height={520} alt="" priority />
+      </ProductImageContainer>
 
       <ProductDetails>
         <Details>
