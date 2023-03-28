@@ -10,10 +10,11 @@ interface ProductProps {
   id: string
   name: string
   price: number
+  priceId: string
   image: string
 }
 
-export const Product = ({ id = '', name = '', price = 0, image = '' }: ProductProps) => {
+export const Product = ({ id = '', name = '', price = 0, priceId = '', image = '' }: ProductProps) => {
   const router = useRouter()
 
   const formattedPrice = (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })

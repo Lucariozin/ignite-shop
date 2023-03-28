@@ -18,6 +18,7 @@ const ProductPage = async ({ params }: ProductPageProps) => {
       id={data?.id ?? ''}
       name={data?.name ?? ''}
       price={data?.price ?? 0}
+      priceId={data?.priceId ?? ''}
       image={data?.image ?? ''}
       description={data?.description ?? ''}
     />

@@ -70,8 +70,8 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
         />
 
         <ProductList>
-          {products.map(({ id, name, price, image }) => (
-            <Product key={id} id={id} name={name} price={price} image={image} />
+          {products.map(({ id, name, price, priceId, image }) => (
+            <Product key={id} id={id} name={name} price={price} priceId={priceId} image={image} />
           ))}
         </ProductList>
 

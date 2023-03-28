@@ -17,6 +17,7 @@ interface ProductPageLayoutProps {
   id: string
   name: string
   price: number
+  priceId: string
   image: string
   description: string
 }
@@ -25,6 +26,7 @@ export const ProductPageLayout = ({
   id = '',
   name = '',
   price = 0,
+  priceId = '',
   image = '',
   description = '',
 }: ProductPageLayoutProps) => {

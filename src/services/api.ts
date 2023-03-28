@@ -9,6 +9,7 @@ export type Product = {
   id: string
   name: string
   price: number
+  priceId: string
   image: string
   description?: string
 }

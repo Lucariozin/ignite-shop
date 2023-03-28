@@ -25,6 +25,7 @@ export async function GET(request: Request, { params }: Context) {
     image: product.images[0] ?? '',
     description: product.description ?? '',
     price: (product.default_price as Stripe.Price).unit_amount ?? 0,
+    priceId: (product.default_price as Stripe.Price).id,
   }
 
   return NextResponse.json({
