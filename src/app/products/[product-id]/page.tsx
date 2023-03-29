@@ -1,5 +1,7 @@
 import { getProductById } from '@/services/api'
 
+import { delay } from '@/utils/delay'
+
 import { ProductPageLayout } from '@/layouts/ProductPageLayout'
 
 interface ProductPageProps {
@@ -11,7 +13,7 @@ interface ProductPageProps {
 const ProductPage = async ({ params }: ProductPageProps) => {
   const productId = String(params?.['product-id'] ?? '')
 
-  const { data } = await getProductById({ productId }, { cache: 'no-cache' })
+  const [{ data }] = await Promise.all([getProductById({ productId }, { cache: 'no-cache' }), delay()])
 
   return (
     <ProductPageLayout
