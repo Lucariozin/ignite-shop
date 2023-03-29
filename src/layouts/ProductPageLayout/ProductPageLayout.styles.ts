@@ -15,6 +15,7 @@ export const Wrapper = styled('main', {
   gap: '4.5rem',
 
   maxWidth: '73rem',
+  width: '100%',
   margin: '0 auto',
 })
 
