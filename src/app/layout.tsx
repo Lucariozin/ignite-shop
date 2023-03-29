@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Roboto } from 'next/font/google'
 
+import { CartProvider } from '@/contexts/Cart/Cart.context'
+
 import { globalStyles } from '@/styles/global'
 import { getCssText } from '@/styles/stitches.config'
 import { StyleSheet } from '@/styles/StyleSheet'
@@ -26,9 +28,11 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
       </head>
 
       <body>
-        <Header />
+        <CartProvider>
+          <Header />
 
-        {children}
+          {children}
+        </CartProvider>
       </body>
     </html>
   )
