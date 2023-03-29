@@ -20,7 +20,7 @@ export const ProductDetails = styled('div', {
   borderRadius: '6px',
   backgroundColor: 'rgba(32, 32, 36, 0.9)',
 
-  transition: 'opacity 0.4s, visibility 0.4s, bottom 0.2s',
+  transition: 'opacity 0.2s, visibility 0.2s, bottom 0.2s',
 })
 
 export const Container = styled('div', {
