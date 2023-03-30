@@ -1,3 +1,5 @@
+import { CartItem } from './components/CartItem'
+
 import {
   Container,
   DetailRow,
@@ -11,6 +13,7 @@ import {
   OrderTotalAmount,
   FinishOrderButton,
   OrderTotalAmountText,
+  ShoppingBagContainer,
 } from './CartSideBar.styles'
 
 interface CartSideBarProps {
@@ -25,9 +28,15 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
     <Container visibility={visibility}>
       <CloseButton onClick={closeSideBar} />
 
-      <ShoppingBagText>Sacola de compras</ShoppingBagText>
+      <ShoppingBagContainer>
+        <ShoppingBagText>Sacola de compras</ShoppingBagText>
 
-      <ItemsContainer></ItemsContainer>
+        <ItemsContainer>
+          <CartItem />
+          <CartItem />
+          <CartItem />
+        </ItemsContainer>
+      </ShoppingBagContainer>
 
       <OrderSummary>
         <OrderDetails>

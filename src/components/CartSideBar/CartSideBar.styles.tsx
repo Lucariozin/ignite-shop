@@ -7,6 +7,10 @@ export const Container = styled('aside', {
   top: '0',
   zIndex: '3',
 
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+
   maxWidth: '30rem',
   width: '100%',
   height: '100vh',
@@ -65,6 +69,8 @@ CloseButton.defaultProps = {
   children: <X size={28} weight="bold" />,
 }
 
+export const ShoppingBagContainer = styled('div', {})
+
 export const ShoppingBagText = styled('h3', {
   fontSize: '1.25rem',
   color: '$gray100',
@@ -72,7 +78,11 @@ export const ShoppingBagText = styled('h3', {
 
 export const ItemsContainer = styled('div', {})
 
-export const OrderSummary = styled('footer', {})
+export const OrderSummary = styled('footer', {
+  width: '100%',
+
+  background: 'red',
+})
 
 export const OrderDetails = styled('div', {})
 
