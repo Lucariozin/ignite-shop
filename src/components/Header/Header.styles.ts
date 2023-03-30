@@ -4,6 +4,9 @@ import Image from 'next/image'
 import { styled } from '@/styles/stitches.config'
 
 export const Container = styled('header', {
+  position: 'relative',
+  zIndex: '2',
+
   height: '7.75rem',
 })
 
