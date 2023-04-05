@@ -76,24 +76,53 @@ export const ShoppingBagText = styled('h3', {
   color: '$gray100',
 })
 
-export const ItemsContainer = styled('div', {})
+export const ItemsContainer = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '1.5rem',
 
-export const OrderSummary = styled('footer', {
-  width: '100%',
-
-  background: 'red',
+  marginTop: '2.5rem',
 })
 
-export const OrderDetails = styled('div', {})
+export const OrderSummary = styled('footer', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '3.75rem',
 
-export const DetailRow = styled('div', {})
+  width: '100%',
+})
 
-export const ItemQuantityText = styled('span', {})
+export const OrderDetails = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.5rem',
+})
 
-export const ItemQuantity = styled('span', {})
+export const DetailRow = styled('div', {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+})
 
-export const OrderTotalAmountText = styled('span', {})
+export const ItemQuantityText = styled('span', {
+  fontSize: '1rem',
+  color: '$gray100',
+})
 
-export const OrderTotalAmount = styled('h4', {})
+export const ItemQuantity = styled('span', {
+  fontSize: '1.25rem',
+  fontWeight: '400',
+  color: '$gray100',
+})
 
-export const FinishOrderButton = styled('button', {})
+export const OrderTotalAmountText = styled('span', {
+  fontSize: '1.25rem',
+  fontWeight: '700',
+  color: '$gray100',
+})
+
+export const OrderTotalAmount = styled('h4', {
+  fontSize: '1.5rem',
+  fontWeight: '700',
+  color: '$gray100',
+})
