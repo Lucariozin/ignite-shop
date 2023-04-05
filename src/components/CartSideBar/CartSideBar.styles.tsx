@@ -81,15 +81,40 @@ export const ItemsContainer = styled('div', {
   flexDirection: 'column',
   gap: '1.5rem',
 
+  maxHeight: '600px',
+
   marginTop: '2.5rem',
+  paddingBottom: '5rem',
+
+  overflowY: 'scroll',
+
+  '&::-webkit-scrollbar': {
+    width: '4px',
+  },
+
+  '&::-webkit-scrollbar-thumb': {
+    backgroundColor: '$gray300',
+    borderRadius: '20px',
+  },
+
+  scrollbarWidth: 'thin',
+  scrollbarColor: '$gray300',
 })
 
 export const OrderSummary = styled('footer', {
+  position: 'absolute',
+
+  inset: '0',
+  top: 'auto',
+
   display: 'flex',
   flexDirection: 'column',
   gap: '3.75rem',
 
-  width: '100%',
+  padding: '2rem 3rem 3rem 3rem',
+
+  backgroundColor: '$gray800',
+  boxShadow: '4px 0px 30px rgba(0, 0, 0, 0.8)',
 })
 
 export const OrderDetails = styled('div', {

@@ -1,5 +1,7 @@
 'use client'
 
+import { Button } from '@/components/Button'
+
 import {
   Name,
   Price,
@@ -10,7 +12,6 @@ import {
   RightColumn,
   ProductImage,
   ProductDetails,
-  AddProductToCartButton,
 } from './ProductPageLayout.styles'
 
 interface ProductPageLayoutProps {
@@ -48,7 +49,7 @@ export const ProductPageLayout = ({
             <Description>{description}</Description>
           </ProductDetails>
 
-          <AddProductToCartButton>Colocar na sacola</AddProductToCartButton>
+          <Button>Colocar na sacola</Button>
         </RightColumn>
       </Wrapper>
     </Container>

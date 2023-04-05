@@ -69,31 +69,3 @@ export const Description = styled('p', {
 
   color: '$gray200',
 })
-
-export const AddProductToCartButton = styled('button', {
-  height: '4.375rem',
-  padding: '0 1rem',
-
-  fontSize: '1.125rem',
-  fontWeight: '700',
-  color: '$white',
-
-  border: 'none',
-  borderRadius: '8px',
-  backgroundColor: '$green500',
-
-  outline: 'none',
-  userSelect: 'none',
-  outlineColor: 'transparent',
-  cursor: 'pointer',
-  transition: 'background-color 0.2s, outline-color 0.2s',
-
-  '&:hover, &:focus-visible': {
-    backgroundColor: '$green400',
-  },
-
-  '&:focus-visible': {
-    outline: '1px solid $green400',
-    outlineOffset: '2px',
-  },
-})

@@ -35,10 +35,20 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
           <CartItem />
           <CartItem />
           <CartItem />
-          {/* <CartItem />
           <CartItem />
           <CartItem />
-          <CartItem /> */}
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
         </ItemsContainer>
       </ShoppingBagContainer>
 
