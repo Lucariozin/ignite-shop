@@ -17,7 +17,8 @@ export const Skeleton = (props: SkeletonProps) => {
     },
   })
 
-  const Container = styled('div', {
+  const Container = styled('span', {
+    display: 'block',
     borderRadius: '4px',
 
     animation: `${Flashing} 1.2s infinite linear`,

@@ -1,5 +1,7 @@
 'use client'
 
+import { useCart } from '@/contexts/Cart/Cart.context'
+
 import { Button } from '@/components/Button'
 
 import {
@@ -31,6 +33,12 @@ export const ProductPageLayout = ({
   image = '',
   description = '',
 }: ProductPageLayoutProps) => {
+  const { addProductToCart } = useCart()
+
+  const handleAddProductToCart = () => {
+    addProductToCart({ priceId, productId: id, productName: name, productPrice: price, productImage: image })
+  }
+
   const formattedPrice = (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
   return (
@@ -49,7 +57,7 @@ export const ProductPageLayout = ({
             <Description>{description}</Description>
           </ProductDetails>
 
-          <Button>Colocar na sacola</Button>
+          <Button onClick={handleAddProductToCart}>Colocar na sacola</Button>
         </RightColumn>
       </Wrapper>
     </Container>

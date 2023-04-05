@@ -8,11 +8,23 @@ const actionFunctions: ActionFunctions = {
   ADD_PRODUCT_TO_CART: ({ state, payload }) => {
     if (!payload) return state
 
-    const { priceId, productName, productPrice, productImage } = payload
+    const { priceId, productId, productName, productPrice, productImage } = payload
 
-    if (!priceId || !productName || !productPrice || !productImage) return state
+    if (!priceId || !productId || !productName || !productPrice || !productImage) return state
 
-    return state
+    const itemIsAlreadyInTheCart = state.items.reduce((acc, item) => {
+      if (item.productId === productId) return true
+
+      return acc
+    }, false)
+
+    if (itemIsAlreadyInTheCart) return state
+
+    const newItem = { priceId, productId, productName, productPrice, productImage }
+
+    const newState = { ...state, items: [...state.items, newItem] }
+
+    return newState
   },
 }
 

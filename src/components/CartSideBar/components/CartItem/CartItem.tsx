@@ -10,18 +10,27 @@ import {
   ItemDetailsContainer,
 } from './CartItem.styles'
 
-export const CartItem = () => {
+interface CartItemProps {
+  productId: string
+  productName: string
+  productPrice: number
+  productImage: string
+}
+
+export const CartItem = ({ productId = '', productName = '', productPrice = 0, productImage = '' }: CartItemProps) => {
+  const formattedPrice = (productPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+
   return (
     <Container>
       <ImageContainer>
-        <Image src="/assets/t-shirt-01.png" alt="" width={100} height={94} />
+        <Image src={productImage} alt="" width={100} height={94} />
       </ImageContainer>
 
       <ItemDetailsContainer>
         <ItemDetails>
-          <ItemName>Camiseta Beyond the Limits</ItemName>
+          <ItemName>{productName}</ItemName>
 
-          <ItemPrice>R$ 79,90</ItemPrice>
+          <ItemPrice>{formattedPrice}</ItemPrice>
         </ItemDetails>
 
         <RemoveItemButton>Remover</RemoveItemButton>

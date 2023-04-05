@@ -1,3 +1,5 @@
+import { useCart } from '@/contexts/Cart/Cart.context'
+
 import { Button } from '@/components/Button'
 import { CartItem } from './components/CartItem'
 
@@ -22,6 +24,8 @@ interface CartSideBarProps {
 }
 
 export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideBarProps) => {
+  const { items } = useCart()
+
   const visibility = open ? 'visible' : 'hidden'
 
   return (
@@ -32,23 +36,15 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
         <ShoppingBagText>Sacola de compras</ShoppingBagText>
 
         <ItemsContainer>
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {items.map(({ productId, productName, productPrice, productImage }) => (
+            <CartItem
+              key={productId}
+              productId={productId}
+              productName={productName}
+              productPrice={productPrice}
+              productImage={productImage}
+            />
+          ))}
         </ItemsContainer>
       </ShoppingBagContainer>
 

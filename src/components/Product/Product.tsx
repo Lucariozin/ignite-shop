@@ -1,6 +1,7 @@
 import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
+import { useCart } from '@/contexts/Cart/Cart.context'
 
 import { CartButton } from '@/components/CartButton'
 
@@ -15,11 +16,17 @@ interface ProductProps {
 }
 
 export const Product = ({ id = '', name = '', price = 0, priceId = '', image = '' }: ProductProps) => {
+  const { addProductToCart } = useCart()
+
   const router = useRouter()
 
-  const formattedPrice = (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
+  const handleAddProductToCart = () => {
+    addProductToCart({ priceId, productId: id, productName: name, productPrice: price, productImage: image })
+  }
 
   const handleProductClick = () => router.push(`/products/${id}`)
+
+  const formattedPrice = (price / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
   return (
     <Container>
@@ -34,7 +41,7 @@ export const Product = ({ id = '', name = '', price = 0, priceId = '', image = '
           <Price>{formattedPrice}</Price>
         </Details>
 
-        <CartButton size="large" color="green" />
+        <CartButton size="large" color="green" title="Adicionar produto ao carrinho" onClick={handleAddProductToCart} />
       </ProductDetails>
     </Container>
   )
