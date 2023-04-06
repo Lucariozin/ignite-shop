@@ -10,14 +10,12 @@ import { CartSideBar } from '@/components/CartSideBar'
 import { Container, Wrapper, LogoImage, HomeAnchor, CartButtonContainer, CartItemsAmount } from './Header.styles'
 
 export const Header = () => {
-  const { items } = useCart()
+  const { itemsQuantity } = useCart()
 
   const [cartSideBarIsOpen, setCartSideBarIsOpen] = useState(false)
 
   const openCartSideBar = () => setCartSideBarIsOpen(true)
   const closeCartSideBar = () => setCartSideBarIsOpen(false)
-
-  const totalItems = items.length
 
   return (
     <>
@@ -30,7 +28,7 @@ export const Header = () => {
           <CartButtonContainer>
             <CartButton onClick={openCartSideBar} />
 
-            {totalItems && <CartItemsAmount>{totalItems}</CartItemsAmount>}
+            {!!itemsQuantity && <CartItemsAmount>{itemsQuantity}</CartItemsAmount>}
           </CartButtonContainer>
         </Wrapper>
       </Container>

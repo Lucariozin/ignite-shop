@@ -24,7 +24,11 @@ interface CartSideBarProps {
 }
 
 export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideBarProps) => {
-  const { items } = useCart()
+  const { items, itemsQuantity, totalPrice } = useCart()
+
+  const itemsQuantityText = `${itemsQuantity} ${itemsQuantity === 1 ? 'item' : 'itens'}`
+
+  const formattedTotalPrice = (totalPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
   const visibility = open ? 'visible' : 'hidden'
 
@@ -53,13 +57,13 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
           <DetailRow>
             <ItemQuantityText>Quantidade</ItemQuantityText>
 
-            <ItemQuantity>3 itens</ItemQuantity>
+            <ItemQuantity>{itemsQuantityText}</ItemQuantity>
           </DetailRow>
 
           <DetailRow>
             <OrderTotalAmountText>Valor total</OrderTotalAmountText>
 
-            <OrderTotalAmount>R$ 270,00</OrderTotalAmount>
+            <OrderTotalAmount>{formattedTotalPrice}</OrderTotalAmount>
           </DetailRow>
         </OrderDetails>
 

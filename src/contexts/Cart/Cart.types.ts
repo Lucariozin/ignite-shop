@@ -29,5 +29,7 @@ export type Item = {
 
 export type CartState = {
   items: Item[]
+  itemsQuantity: number
+  totalPrice: number
   dispatch: Dispatch<Action>
 }
