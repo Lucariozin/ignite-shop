@@ -31,3 +31,26 @@ export const HomeAnchor = styled(Link, {
 export const LogoImage = styled(Image, {
   userSelect: 'none',
 })
+
+export const CartButtonContainer = styled('div', {
+  position: 'relative',
+})
+
+export const CartItemsAmount = styled('span', {
+  position: 'absolute',
+  top: '-0.65rem',
+  right: '-0.65rem',
+
+  padding: '0.75rem 0.5rem',
+
+  fontSize: '0.875rem',
+  fontWeight: '700',
+  lineHeight: '0',
+  color: '$white',
+
+  borderRadius: '1rem',
+  border: '3px solid $gray900',
+  background: '$green500',
+
+  userSelect: 'none',
+})
