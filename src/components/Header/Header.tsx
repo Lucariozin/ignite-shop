@@ -2,16 +2,12 @@
 
 import { useState } from 'react'
 
-import { useCart } from '@/contexts/Cart'
-
-import { CartButton } from '@/components/CartButton'
 import { CartSideBar } from '@/components/CartSideBar'
+import { OpenCartSideBarButton } from './components/OpenCartSideBarButton'
 
-import { Container, Wrapper, LogoImage, HomeAnchor, CartButtonContainer, CartItemsAmount } from './Header.styles'
+import { Container, Wrapper, LogoImage, HomeAnchor } from './Header.styles'
 
 export const Header = () => {
-  const { itemsQuantity } = useCart()
-
   const [cartSideBarIsOpen, setCartSideBarIsOpen] = useState(false)
 
   const openCartSideBar = () => setCartSideBarIsOpen(true)
@@ -25,11 +21,7 @@ export const Header = () => {
             <LogoImage src="/assets/ignite-shop-logo.svg" width={130} height={52} alt="" priority />
           </HomeAnchor>
 
-          <CartButtonContainer>
-            <CartButton onClick={openCartSideBar} disabled={!itemsQuantity} />
-
-            {!!itemsQuantity && <CartItemsAmount>{itemsQuantity}</CartItemsAmount>}
-          </CartButtonContainer>
+          <OpenCartSideBarButton openCartSideBar={openCartSideBar} />
         </Wrapper>
       </Container>
 

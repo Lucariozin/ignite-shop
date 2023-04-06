@@ -16,6 +16,7 @@ import {
   OrderTotalAmount,
   OrderTotalAmountText,
   ShoppingBagContainer,
+  CartWithoutProductsText,
 } from './CartSideBar.styles'
 
 interface CartSideBarProps {
@@ -39,6 +40,10 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
       <ShoppingBagContainer>
         <ShoppingBagText>Sacola de compras</ShoppingBagText>
 
+        {!itemsQuantity && (
+          <CartWithoutProductsText>{'Você ainda não possui itens em sua sacola de compras :('}</CartWithoutProductsText>
+        )}
+
         <ItemsContainer>
           {items.map(({ productId, productName, productPrice, productImage }) => (
             <CartItem
@@ -53,23 +58,25 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
         </ItemsContainer>
       </ShoppingBagContainer>
 
-      <OrderSummary>
-        <OrderDetails>
-          <DetailRow>
-            <ItemQuantityText>Quantidade</ItemQuantityText>
+      {!!itemsQuantity && (
+        <OrderSummary>
+          <OrderDetails>
+            <DetailRow>
+              <ItemQuantityText>Quantidade</ItemQuantityText>
 
-            <ItemQuantity>{itemsQuantityText}</ItemQuantity>
-          </DetailRow>
+              <ItemQuantity>{itemsQuantityText}</ItemQuantity>
+            </DetailRow>
 
-          <DetailRow>
-            <OrderTotalAmountText>Valor total</OrderTotalAmountText>
+            <DetailRow>
+              <OrderTotalAmountText>Valor total</OrderTotalAmountText>
 
-            <OrderTotalAmount>{formattedTotalPrice}</OrderTotalAmount>
-          </DetailRow>
-        </OrderDetails>
+              <OrderTotalAmount>{formattedTotalPrice}</OrderTotalAmount>
+            </DetailRow>
+          </OrderDetails>
 
-        <Button>Finalizar compra</Button>
-      </OrderSummary>
+          <Button>Finalizar compra</Button>
+        </OrderSummary>
+      )}
     </Container>
   )
 }

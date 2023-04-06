@@ -76,6 +76,14 @@ export const ShoppingBagText = styled('h3', {
   color: '$gray100',
 })
 
+export const CartWithoutProductsText = styled('span', {
+  display: 'block',
+  marginTop: '2rem',
+
+  fontSize: '1.5rem',
+  color: '$gray200',
+})
+
 export const ItemsContainer = styled('div', {
   display: 'flex',
   flexDirection: 'column',
