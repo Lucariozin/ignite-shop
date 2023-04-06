@@ -1,4 +1,4 @@
-import { useCart } from '@/contexts/Cart/Cart.context'
+import { useCart } from '@/contexts/Cart'
 
 import { Button } from '@/components/Button'
 import { CartItem } from './components/CartItem'
@@ -24,7 +24,7 @@ interface CartSideBarProps {
 }
 
 export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideBarProps) => {
-  const { items, itemsQuantity, totalPrice } = useCart()
+  const { items, itemsQuantity, totalPrice, removeProductFromCart } = useCart()
 
   const itemsQuantityText = `${itemsQuantity} ${itemsQuantity === 1 ? 'item' : 'itens'}`
 
@@ -47,6 +47,7 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
               productName={productName}
               productPrice={productPrice}
               productImage={productImage}
+              removeProductFromCart={removeProductFromCart}
             />
           ))}
         </ItemsContainer>

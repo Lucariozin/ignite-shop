@@ -1,7 +1,7 @@
 import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
-import { useCart } from '@/contexts/Cart/Cart.context'
+import { useCart } from '@/contexts/Cart'
 
 import { CartButton } from '@/components/CartButton'
 

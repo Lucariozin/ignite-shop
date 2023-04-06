@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 
-import { useCart } from '@/contexts/Cart/Cart.context'
+import { useCart } from '@/contexts/Cart'
 
 import { CartButton } from '@/components/CartButton'
 import { CartSideBar } from '@/components/CartSideBar'
@@ -26,7 +26,7 @@ export const Header = () => {
           </HomeAnchor>
 
           <CartButtonContainer>
-            <CartButton onClick={openCartSideBar} />
+            <CartButton onClick={openCartSideBar} disabled={!itemsQuantity} />
 
             {!!itemsQuantity && <CartItemsAmount>{itemsQuantity}</CartItemsAmount>}
           </CartButtonContainer>

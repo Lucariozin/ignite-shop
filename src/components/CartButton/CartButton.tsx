@@ -13,6 +13,12 @@ export const CartButton = styled('button', {
   outlineColor: 'transparent',
   transition: 'background-color 0.2s, outline-color 0.2s',
 
+  '&:disabled': {
+    opacity: '0.8',
+    filter: 'brightness(0.8)',
+    cursor: 'not-allowed',
+  },
+
   '&:focus-visible': {
     outline: '1px solid $green400',
     outlineOffset: '2px',
@@ -38,7 +44,7 @@ export const CartButton = styled('button', {
         color: '$gray300',
         backgroundColor: '$gray800',
 
-        '&:hover, &:focus-visible': {
+        '&:not(:disabled):hover, &:not(:disabled):focus-visible': {
           backgroundColor: '$gray700',
         },
       },
@@ -46,7 +52,7 @@ export const CartButton = styled('button', {
         color: '$white',
         backgroundColor: '$green500',
 
-        '&:hover, &:focus-visible': {
+        '&:not(:disabled):hover, &:not(:disabled):focus-visible': {
           backgroundColor: '$green400',
         },
       },

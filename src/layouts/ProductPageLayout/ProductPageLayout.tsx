@@ -1,6 +1,6 @@
 'use client'
 
-import { useCart } from '@/contexts/Cart/Cart.context'
+import { useCart } from '@/contexts/Cart'
 
 import { Button } from '@/components/Button'
 

@@ -15,9 +15,20 @@ interface CartItemProps {
   productName: string
   productPrice: number
   productImage: string
+  removeProductFromCart: (params: { productId: string }) => void
 }
 
-export const CartItem = ({ productId = '', productName = '', productPrice = 0, productImage = '' }: CartItemProps) => {
+export const CartItem = ({
+  productId = '',
+  productName = '',
+  productPrice = 0,
+  productImage = '',
+  removeProductFromCart = () => {},
+}: CartItemProps) => {
+  const handleRemoveProductFromCart = () => {
+    removeProductFromCart({ productId })
+  }
+
   const formattedPrice = (productPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
 
   return (
@@ -33,7 +44,7 @@ export const CartItem = ({ productId = '', productName = '', productPrice = 0, p
           <ItemPrice>{formattedPrice}</ItemPrice>
         </ItemDetails>
 
-        <RemoveItemButton>Remover</RemoveItemButton>
+        <RemoveItemButton onClick={handleRemoveProductFromCart}>Remover</RemoveItemButton>
       </ItemDetailsContainer>
     </Container>
   )

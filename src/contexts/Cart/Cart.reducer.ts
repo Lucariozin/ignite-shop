@@ -26,6 +26,18 @@ const actionFunctions: ActionFunctions = {
 
     return newState
   },
+
+  REMOVE_PRODUCT_FROM_CART: ({ state, payload }) => {
+    if (!payload?.productId) return state
+
+    const { productId } = payload
+
+    const newItems = state.items.filter((item) => item.productId !== productId)
+
+    const newState = { ...state, items: newItems }
+
+    return newState
+  },
 }
 
 export const reducer = (state: CartState, action: Action) => {
