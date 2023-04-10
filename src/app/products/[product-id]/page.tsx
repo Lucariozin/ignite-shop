@@ -1,4 +1,4 @@
-import { getProductById } from '@/services/api'
+import { getProductById } from '@/services/http/api'
 
 import { delay } from '@/utils/delay'
 

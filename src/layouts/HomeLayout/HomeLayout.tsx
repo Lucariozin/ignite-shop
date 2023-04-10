@@ -2,7 +2,7 @@
 
 import { RefObject, useRef, useState } from 'react'
 
-import type { Product as ProductType } from '@/services/api'
+import type { Product as ProductType } from '@/services/http/api/types'
 
 import { Product } from '@/components/Product'
 import { CarouselNavigationButton } from './components/CarouselNavigationButton'

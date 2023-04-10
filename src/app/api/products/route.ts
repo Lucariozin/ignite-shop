@@ -4,7 +4,7 @@ import { Stripe } from 'stripe'
 
 import { stripe } from '@/services/stripe'
 
-import type { Product } from '@/services/api'
+import type { Product } from '@/services/http/api/types'
 
 export async function GET(request: Request) {
   const products = await stripe.products.list({ expand: ['data.default_price'] })

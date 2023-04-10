@@ -1,4 +1,4 @@
-import { getProducts } from '@/services/api'
+import { getProducts } from '@/services/http/api'
 
 import { HomeLayout } from '@/layouts/HomeLayout'
 
