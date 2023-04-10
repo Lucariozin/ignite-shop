@@ -1,6 +1,6 @@
 'use client'
 
-import { RefObject, useRef, useState } from 'react'
+import { RefObject, useCallback, useRef, useState } from 'react'
 
 import type { Product as ProductType } from '@/services/http/api/types'
 
@@ -16,6 +16,7 @@ interface HomeLayoutProps {
 export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
   const screenWidth = window?.screen?.width ?? 0
 
+  const [carouselIsNavigating, setCarouselIsNavigating] = useState(false)
   const [carouselPassedAmount, setCarouselPassedAmount] = useState(screenWidth)
 
   const productsCarouselRef = useRef() as RefObject<HTMLDivElement>
@@ -24,7 +25,11 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
 
   const getCasouselLength = () => productsCarouselRef.current?.scrollWidth ?? 0
 
-  const handleGoToTheCarouselRight = () => {
+  const handleGoToTheCarouselRight = useCallback(() => {
+    if (carouselIsNavigating) return
+
+    setCarouselIsNavigating(true)
+
     const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
 
     setCarouselPassedAmount((state) => {
@@ -40,9 +45,15 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
       left: productElementWidth,
       behavior: 'smooth',
     })
-  }
 
-  const handleGoToTheCarouselLeft = () => {
+    setTimeout(() => setCarouselIsNavigating(false), 500)
+  }, [carouselIsNavigating, itemsQuantity])
+
+  const handleGoToTheCarouselLeft = useCallback(() => {
+    if (carouselIsNavigating) return
+
+    setCarouselIsNavigating(true)
+
     const productElementWidth = Math.floor((productsCarouselRef.current?.scrollWidth ?? 0) / itemsQuantity)
 
     setCarouselPassedAmount((state) => {
@@ -57,7 +68,9 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
       left: productElementWidth * -1,
       behavior: 'smooth',
     })
-  }
+
+    setTimeout(() => setCarouselIsNavigating(false), 500)
+  }, [carouselIsNavigating, itemsQuantity, screenWidth])
 
   return (
     <Container>
