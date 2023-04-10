@@ -56,7 +56,7 @@ export const OpenCartSideBarButton = ({ openCartSideBar = () => {} }: OpenCartSi
 
   return (
     <Container onClick={openCartSideBar}>
-      <CartButton />
+      <CartButton title="Abrir sacola de compras" />
 
       {!!itemsQuantity && <CartItemsAmount>{itemsQuantity}</CartItemsAmount>}
 

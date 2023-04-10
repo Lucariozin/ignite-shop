@@ -1,3 +1,5 @@
+import { getCheckoutSession } from '@/services/http/api'
+
 import { useCart } from '@/contexts/Cart'
 
 import { Button } from '@/components/Button'
@@ -27,6 +29,16 @@ interface CartSideBarProps {
 export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideBarProps) => {
   const { items, itemsQuantity, totalPrice, removeProductFromCart } = useCart()
 
+  const handleFinishOrder = async () => {
+    const mappedItems = items.map((item) => ({ price: item.priceId, quantity: 1 }))
+
+    const { data } = await getCheckoutSession({ items: mappedItems })
+
+    if (!data || !data.url) return
+
+    window.location.href = data.url
+  }
+
   const itemsQuantityText = `${itemsQuantity} ${itemsQuantity === 1 ? 'item' : 'itens'}`
 
   const formattedTotalPrice = (totalPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
@@ -35,7 +47,7 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
 
   return (
     <Container visibility={visibility}>
-      <CloseButton onClick={closeSideBar} />
+      <CloseButton onClick={closeSideBar} title="Fechar sacola de compras" />
 
       <ShoppingBagContainer>
         <ShoppingBagText>Sacola de compras</ShoppingBagText>
@@ -74,7 +86,7 @@ export const CartSideBar = ({ open = false, closeSideBar = () => {} }: CartSideB
             </DetailRow>
           </OrderDetails>
 
-          <Button>Finalizar compra</Button>
+          <Button onClick={handleFinishOrder}>Finalizar compra</Button>
         </OrderSummary>
       )}
     </Container>

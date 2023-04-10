@@ -41,7 +41,7 @@ export const Product = ({ id = '', name = '', price = 0, priceId = '', image = '
           <Price>{formattedPrice}</Price>
         </Details>
 
-        <CartButton size="large" color="green" title="Adicionar produto ao carrinho" onClick={handleAddProductToCart} />
+        <CartButton size="large" color="green" title="Adicionar produto à sacola" onClick={handleAddProductToCart} />
       </ProductDetails>
     </Container>
   )
