@@ -7,6 +7,10 @@ export const Container = styled('header', {
   position: 'relative',
   zIndex: '2',
 
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'flex-end',
+
   height: '7.75rem',
 })
 
