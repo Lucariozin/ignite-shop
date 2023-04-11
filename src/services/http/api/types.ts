@@ -1,3 +1,5 @@
+import { RequestInit } from 'next/dist/server/web/spec-extension/request'
+
 export type Return<T = any> = {
   data: T | null
   status: 'success' | 'failed'
@@ -12,9 +14,22 @@ export type Product = {
   description?: string
 }
 
+export type GetProducts = (requestConfig?: RequestInit) => Promise<Return<Product[]>>
+
 export type GetProductByIdParams = {
   productId: string
 }
+
+export type GetProductById = (params: GetProductByIdParams, requestConfig?: RequestInit) => Promise<Return<Product>>
+
+type GetProductsBySessionIdParams = {
+  sessionId: string
+}
+
+export type GetProductsBySessionId = (
+  params: GetProductsBySessionIdParams,
+  requestConfig?: RequestInit,
+) => Promise<Return<Partial<Product>>>
 
 export type Item = {
   price: string
@@ -24,3 +39,8 @@ export type Item = {
 export type GetCheckoutSessionParams = {
   items: Item[]
 }
+
+export type GetCheckoutSession = (
+  params: GetCheckoutSessionParams,
+  requestConfig?: RequestInit,
+) => Promise<Return<{ url: string }>>

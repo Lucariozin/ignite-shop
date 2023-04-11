@@ -1,10 +1,10 @@
 import type { RequestInit } from 'next/dist/server/web/spec-extension/request'
 
-import type { GetCheckoutSessionParams, GetProductByIdParams, Product, Return } from './types'
+import type { GetProducts, GetProductById, GetProductsBySessionId, GetCheckoutSession, Product } from './types'
 
 const baseUrl = `${process.env.NEXT_PUBLIC_BASE_APPLICATION_URL}/api`
 
-export const getProducts = async (requestConfig?: RequestInit): Promise<Return<Product[]>> => {
+export const getProducts: GetProducts = async (requestConfig) => {
   const url = `${baseUrl}/products`
 
   try {
@@ -23,10 +23,7 @@ export const getProducts = async (requestConfig?: RequestInit): Promise<Return<P
   }
 }
 
-export const getProductById = async (
-  { productId = '' }: GetProductByIdParams,
-  requestConfig?: RequestInit,
-): Promise<Return<Product>> => {
+export const getProductById: GetProductById = async ({ productId = '' }, requestConfig) => {
   const url = `${baseUrl}/products/${productId}`
 
   try {
@@ -45,10 +42,32 @@ export const getProductById = async (
   }
 }
 
-export const getCheckoutSession = async (
-  { items }: GetCheckoutSessionParams,
-  requestConfig?: RequestInit,
-): Promise<Return<{ url: string }>> => {
+export const getProductsBySessionId: GetProductsBySessionId = async ({ sessionId = '' }, requestConfig) => {
+  const url = `${baseUrl}/products`
+
+  const newRequestConfig: RequestInit = {
+    ...requestConfig,
+    method: 'POST',
+    body: JSON.stringify({ sessionId }),
+  }
+
+  try {
+    const response = await fetch(url, newRequestConfig)
+    const data = (await response.json()).data as Partial<Product>
+
+    return {
+      data,
+      status: 'success',
+    }
+  } catch {
+    return {
+      data: null,
+      status: 'failed',
+    }
+  }
+}
+
+export const getCheckoutSession: GetCheckoutSession = async ({ items }, requestConfig) => {
   const url = `${baseUrl}/get-checkout-session`
 
   const newRequestConfig: RequestInit = {
@@ -60,7 +79,7 @@ export const getCheckoutSession = async (
 
   try {
     const response = await fetch(url, newRequestConfig)
-    const data = (await response.json()).data
+    const data = (await response.json()).data as { url: string }
 
     return {
       data,
