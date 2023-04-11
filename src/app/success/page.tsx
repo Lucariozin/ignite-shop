@@ -1,3 +1,5 @@
+import { getProductsBySessionId } from '@/services/http/api'
+
 interface SuccessPageProps {
   searchParams?: {
     session_id: string
@@ -7,7 +9,9 @@ interface SuccessPageProps {
 const SuccessPage = async ({ searchParams }: SuccessPageProps) => {
   const sessionId = searchParams?.session_id ?? ''
 
-  console.log('Session ID', sessionId)
+  const { data } = await getProductsBySessionId({ sessionId }, { cache: 'no-cache' })
+
+  console.log('DATA', data)
 
   return (
     <div>
