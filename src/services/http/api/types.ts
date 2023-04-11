@@ -26,10 +26,15 @@ type GetProductsBySessionIdParams = {
   sessionId: string
 }
 
+export type GetProductsBySessionIdReturn = {
+  products: Partial<Product>[]
+  userName: string
+}
+
 export type GetProductsBySessionId = (
   params: GetProductsBySessionIdParams,
   requestConfig?: RequestInit,
-) => Promise<Return<Partial<Product>>>
+) => Promise<Return<GetProductsBySessionIdReturn>>
 
 export type Item = {
   price: string

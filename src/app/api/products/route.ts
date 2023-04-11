@@ -22,26 +22,3 @@ export async function GET() {
     data: mappedProducts,
   })
 }
-
-export async function POST(request: Request) {
-  const body = await request.json()
-
-  const sessionId = body?.sessionId
-
-  if (!sessionId) return NextResponse.json({ error: 'Invalid session id' })
-
-  const items = (await stripe.checkout.sessions.listLineItems(sessionId, { expand: ['data.price.product'] })).data
-
-  const mappedItems = items.map((item) => {
-    const product = item.price?.product as Stripe.Product
-
-    return {
-      name: product.name,
-      image: product.images[0],
-    }
-  })
-
-  return NextResponse.json({
-    data: mappedItems,
-  })
-}

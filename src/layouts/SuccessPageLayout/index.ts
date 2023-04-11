@@ -1,0 +1,1 @@
+export { SuccessPageLayout } from './SuccessPageLayout'

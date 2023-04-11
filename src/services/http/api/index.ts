@@ -1,6 +1,13 @@
 import type { RequestInit } from 'next/dist/server/web/spec-extension/request'
 
-import type { GetProducts, GetProductById, GetProductsBySessionId, GetCheckoutSession, Product } from './types'
+import type {
+  Product,
+  GetProducts,
+  GetProductById,
+  GetCheckoutSession,
+  GetProductsBySessionId,
+  GetProductsBySessionIdReturn,
+} from './types'
 
 const baseUrl = `${process.env.NEXT_PUBLIC_BASE_APPLICATION_URL}/api`
 
@@ -43,7 +50,7 @@ export const getProductById: GetProductById = async ({ productId = '' }, request
 }
 
 export const getProductsBySessionId: GetProductsBySessionId = async ({ sessionId = '' }, requestConfig) => {
-  const url = `${baseUrl}/products`
+  const url = `${baseUrl}/products/get-by-session-id`
 
   const newRequestConfig: RequestInit = {
     ...requestConfig,
@@ -53,7 +60,7 @@ export const getProductsBySessionId: GetProductsBySessionId = async ({ sessionId
 
   try {
     const response = await fetch(url, newRequestConfig)
-    const data = (await response.json()).data as Partial<Product>
+    const data = (await response.json()).data as GetProductsBySessionIdReturn
 
     return {
       data,

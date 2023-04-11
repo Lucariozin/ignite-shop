@@ -1,5 +1,7 @@
 import { getProductsBySessionId } from '@/services/http/api'
 
+import { SuccessPageLayout } from '@/layouts/SuccessPageLayout'
+
 interface SuccessPageProps {
   searchParams?: {
     session_id: string
@@ -11,13 +13,7 @@ const SuccessPage = async ({ searchParams }: SuccessPageProps) => {
 
   const { data } = await getProductsBySessionId({ sessionId }, { cache: 'no-cache' })
 
-  console.log('DATA', data)
-
-  return (
-    <div>
-      <h1>Success</h1>
-    </div>
-  )
+  return <SuccessPageLayout products={data?.products ?? []} userName={data?.userName ?? ''} />
 }
 
 export default SuccessPage
