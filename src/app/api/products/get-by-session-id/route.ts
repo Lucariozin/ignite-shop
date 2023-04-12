@@ -9,7 +9,7 @@ export async function POST(request: Request) {
 
   const sessionId = body?.sessionId
 
-  if (!sessionId) return NextResponse.json({ error: 'Invalid session id' })
+  if (!sessionId) throw new Error('Invalid session id')
 
   const session = await stripe.checkout.sessions.retrieve(sessionId)
   const products = (await stripe.checkout.sessions.listLineItems(sessionId, { expand: ['data.price.product'] })).data

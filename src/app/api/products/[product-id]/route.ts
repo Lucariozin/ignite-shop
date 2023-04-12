@@ -13,9 +13,9 @@ interface Context {
 }
 
 export async function GET(request: Request, { params }: Context) {
-  const productId = String(params?.['product-id'] ?? '')
+  const productId = String(params?.['product-id'] ?? '').trim()
 
-  if (!productId) return NextResponse.json({ error: 'Invalid product id' })
+  if (!productId.length) throw new Error('Invalid product id')
 
   const product = await stripe.products.retrieve(productId, { expand: ['default_price'] })
 

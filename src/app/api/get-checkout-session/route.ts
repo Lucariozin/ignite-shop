@@ -5,11 +5,11 @@ import { stripe } from '@/services/stripe'
 export async function POST(request: Request) {
   const { items } = await request.json()
 
-  if (!items) return NextResponse.json({ error: 'Invalid items' })
+  if (!items) throw new Error('Invalid items')
 
   const applicationUrl = process.env.NEXT_PUBLIC_BASE_APPLICATION_URL
 
-  if (!applicationUrl) return NextResponse.json({ error: 'Invalid application url' })
+  if (!applicationUrl) throw new Error('Invalid application url')
 
   const checkoutSession = await stripe.checkout.sessions.create({
     success_url: `${applicationUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
