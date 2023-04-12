@@ -29,3 +29,10 @@ export const ProductList = styled('div', {
     marginLeft: '0',
   },
 })
+
+export const NoProductsText = styled('h1', {
+  width: '100%',
+  textAlign: 'center',
+
+  color: '$gray100',
+})

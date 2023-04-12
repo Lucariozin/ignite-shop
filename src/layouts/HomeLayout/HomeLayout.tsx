@@ -7,7 +7,7 @@ import type { Product as ProductType } from '@/services/http/api/types'
 import { Product } from '@/components/Product'
 import { CarouselNavigationButton } from './components/CarouselNavigationButton'
 
-import { Container, Carousel, ProductList } from './HomeLayout.styles'
+import { Container, Carousel, ProductList, NoProductsText } from './HomeLayout.styles'
 
 interface HomeLayoutProps {
   products: ProductType[]
@@ -72,29 +72,35 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
     setTimeout(() => setCarouselIsNavigating(false), 500)
   }, [carouselIsNavigating, itemsQuantity, screenWidth])
 
+  const thereAreProducts = !!products.length
+
   return (
     <Container>
-      <Carousel ref={productsCarouselRef} onScroll={(event) => event.preventDefault()}>
-        <CarouselNavigationButton
-          direction="left"
-          title="Ver os produtos anteriores"
-          onClick={handleGoToTheCarouselLeft}
-          isVisible={carouselPassedAmount !== screenWidth}
-        />
+      {thereAreProducts ? (
+        <Carousel ref={productsCarouselRef} onScroll={(event) => event.preventDefault()}>
+          <CarouselNavigationButton
+            direction="left"
+            title="Ver os produtos anteriores"
+            onClick={handleGoToTheCarouselLeft}
+            isVisible={carouselPassedAmount !== screenWidth}
+          />
 
-        <ProductList>
-          {products.map(({ id, name, price, priceId, image }) => (
-            <Product key={id} id={id} name={name} price={price} priceId={priceId} image={image} />
-          ))}
-        </ProductList>
+          <ProductList>
+            {products.map(({ id, name, price, priceId, image }) => (
+              <Product key={id} id={id} name={name} price={price} priceId={priceId} image={image} />
+            ))}
+          </ProductList>
 
-        <CarouselNavigationButton
-          direction="right"
-          title="Ver os próximos produtos"
-          onClick={handleGoToTheCarouselRight}
-          isVisible={carouselPassedAmount !== getCasouselLength()}
-        />
-      </Carousel>
+          <CarouselNavigationButton
+            direction="right"
+            title="Ver os próximos produtos"
+            onClick={handleGoToTheCarouselRight}
+            isVisible={carouselPassedAmount !== getCasouselLength()}
+          />
+        </Carousel>
+      ) : (
+        <NoProductsText>Não existem produtos disponíveis no momento...</NoProductsText>
+      )}
     </Container>
   )
 }

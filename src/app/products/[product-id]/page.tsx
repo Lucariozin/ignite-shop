@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import { getProductById } from '@/services/http/api'
 
 import { delay } from '@/utils/delay'
@@ -13,7 +15,9 @@ interface ProductPageProps {
 const ProductPage = async ({ params }: ProductPageProps) => {
   const productId = String(params?.['product-id'] ?? '')
 
-  const [{ data }] = await Promise.all([getProductById({ productId }, { cache: 'no-cache' }), delay()])
+  const [{ data, status }] = await Promise.all([getProductById({ productId }, { cache: 'no-cache' }), delay()])
+
+  if (status === 'failed' || !data) redirect('/')
 
   return (
     <ProductPageLayout
