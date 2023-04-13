@@ -23,6 +23,18 @@ export const ProductDetails = styled('div', {
   transition: 'opacity 0.2s, visibility 0.2s, bottom 0.2s',
 })
 
+export const ProductImageContainer = styled('div', {
+  width: '100%',
+  height: '100%',
+
+  padding: '5.5rem',
+  cursor: 'pointer',
+
+  '& > img': {
+    userSelect: 'none',
+  },
+})
+
 export const Container = styled('div', {
   position: 'relative',
   overflow: 'hidden',
@@ -40,16 +52,28 @@ export const Container = styled('div', {
       bottom: '4px',
     },
   },
-})
 
-export const ProductImageContainer = styled('div', {
-  width: '100%',
-  height: '100%',
+  '@media (max-height: 800px)': {
+    minWidth: '35rem',
+    height: 'calc(100vh - 9rem)',
 
-  padding: '5.5rem',
+    '& img': {
+      display: 'block',
 
-  '& > img': {
-    userSelect: 'none',
+      width: '100%',
+      height: 'auto',
+      maxHeight: '100%',
+
+      margin: '0 auto',
+    },
+
+    [`& ${ProductImageContainer}`]: {
+      padding: '0',
+    },
+  },
+
+  '@sm1': {
+    minWidth: '90vw',
   },
 })
 

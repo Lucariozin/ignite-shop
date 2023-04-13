@@ -7,7 +7,12 @@ export const globalStyles = globalCss({
     boxSizing: 'border-box',
   },
 
+  html: {
+    overflow: 'hidden',
+  },
+
   body: {
     backgroundColor: '$gray900',
+    overflow: 'hidden',
   },
 })

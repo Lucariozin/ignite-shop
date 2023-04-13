@@ -5,6 +5,7 @@ import { styled } from '@/styles/stitches.config'
 export const Container = styled('aside', {
   position: 'fixed',
   top: '0',
+  bottom: '0',
   zIndex: '3',
 
   display: 'flex',
@@ -13,7 +14,6 @@ export const Container = styled('aside', {
 
   maxWidth: '30rem',
   width: '100%',
-  height: '100vh',
 
   padding: '4.5rem 3rem 3rem 3rem',
 
