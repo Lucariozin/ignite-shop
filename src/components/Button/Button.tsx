@@ -29,4 +29,9 @@ export const Button = styled('button', {
     outline: '1px solid $green400',
     outlineOffset: '2px',
   },
+
+  '@md1': {
+    height: '3.5rem',
+    fontSize: '1rem',
+  },
 })

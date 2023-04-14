@@ -8,11 +8,11 @@ export const globalStyles = globalCss({
   },
 
   html: {
-    overflow: 'hidden',
+    overflow: 'scroll',
   },
 
   body: {
     backgroundColor: '$gray900',
-    overflow: 'hidden',
+    overflowX: 'hidden',
   },
 })

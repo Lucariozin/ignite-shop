@@ -17,14 +17,28 @@ export const Wrapper = styled('main', {
   maxWidth: '73rem',
   width: '100%',
   margin: '0 auto',
+
+  '@md1': {
+    gridTemplateColumns: '1fr',
+    gap: '2rem',
+  },
 })
 
 export const LeftColumn = styled('div', {
+  maxWidth: '35.875rem',
+  width: '100%',
   height: '41rem',
+
+  margin: '0 auto',
   padding: '5.5rem 1.75rem',
 
   borderRadius: '8px',
   backgroundImage: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
+
+  '@md1': {
+    height: '30rem',
+    padding: '0rem 1rem',
+  },
 })
 
 export const ProductImage = styled('div', {
@@ -40,6 +54,10 @@ export const RightColumn = styled('div', {
   flexDirection: 'column',
   justifyContent: 'space-between',
   gap: '2rem',
+
+  '@md1': {
+    marginBottom: '5rem',
+  },
 })
 
 export const ProductDetails = styled('div', {
@@ -54,12 +72,20 @@ export const Name = styled('h1', {
   fontSize: '2rem',
   fontWeight: '700',
   color: '$gray200',
+
+  '@md1': {
+    fontSize: '1.5rem',
+  },
 })
 
 export const Price = styled('h2', {
   fontSize: '2rem',
   fontWeight: '400',
   color: '$green400',
+
+  '@md1': {
+    fontSize: '1.75rem',
+  },
 })
 
 export const Description = styled('p', {
@@ -68,4 +94,8 @@ export const Description = styled('p', {
   marginTop: '1rem',
 
   color: '$gray200',
+
+  '@md1': {
+    fontSize: '1rem',
+  },
 })
