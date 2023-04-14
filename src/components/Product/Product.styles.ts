@@ -1,5 +1,26 @@
 import { styled } from '@/styles/stitches.config'
 
+export const Details = styled('div', {
+  display: 'flex',
+  flexDirection: 'column',
+  gap: '0.7rem',
+})
+
+export const Name = styled('h2', {
+  fontSize: '1.25rem',
+  fontWeight: '700',
+  marginTop: 'auto',
+
+  color: '$gray100',
+})
+
+export const Price = styled('span', {
+  fontSize: '1.5rem',
+  fontWeight: '700',
+
+  color: '$green400',
+})
+
 export const ProductDetails = styled('div', {
   position: 'absolute',
 
@@ -21,6 +42,24 @@ export const ProductDetails = styled('div', {
   backgroundColor: 'rgba(32, 32, 36, 0.9)',
 
   transition: 'opacity 0.2s, visibility 0.2s, bottom 0.2s',
+
+  '@md1': {
+    opacity: '1',
+    visibility: 'visible',
+    bottom: '4px',
+  },
+
+  '@sm1': {
+    padding: '0 1rem',
+  },
+
+  [`${Name}`]: {
+    fontSize: '1.125rem',
+  },
+
+  [`${Price}`]: {
+    fontSize: '1.25rem',
+  },
 })
 
 export const ProductImageContainer = styled('div', {
@@ -53,9 +92,9 @@ export const Container = styled('div', {
     },
   },
 
-  '@media (max-height: 800px)': {
+  '@md1': {
     minWidth: '35rem',
-    height: 'calc(100vh - 9rem)',
+    height: 'auto',
 
     '& img': {
       display: 'block',
@@ -69,31 +108,15 @@ export const Container = styled('div', {
 
     [`& ${ProductImageContainer}`]: {
       padding: '0',
+      marginBottom: '6rem',
     },
   },
 
-  '@sm1': {
-    minWidth: '90vw',
+  '@media(max-height: 700px)': {
+    height: 'auto',
   },
-})
 
-export const Details = styled('div', {
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '0.7rem',
-})
-
-export const Name = styled('h2', {
-  fontSize: '1.25rem',
-  fontWeight: '700',
-  marginTop: 'auto',
-
-  color: '$gray100',
-})
-
-export const Price = styled('span', {
-  fontSize: '1.5rem',
-  fontWeight: '700',
-
-  color: '$green400',
+  '@sm1': {
+    minWidth: '86vw',
+  },
 })

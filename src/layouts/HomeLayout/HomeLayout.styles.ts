@@ -17,6 +17,10 @@ export const Carousel = styled('div', {
   '&::-webkit-scrollbar': {
     display: 'none',
   },
+
+  '@md1': {
+    overflowX: 'scroll',
+  },
 })
 
 export const ProductList = styled('div', {

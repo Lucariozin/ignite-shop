@@ -36,6 +36,10 @@ export const ShadowColumn = styled('div', {
     direction: 'left',
     visibility: 'hidden',
   },
+
+  '@md1': {
+    display: 'none',
+  },
 })
 
 export const NavigationButton = styled('button', {
