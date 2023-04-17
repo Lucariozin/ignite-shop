@@ -89,10 +89,10 @@ export const ItemsContainer = styled('div', {
   flexDirection: 'column',
   gap: '1.5rem',
 
-  maxHeight: '600px',
+  maxHeight: 'calc(100vh - 23rem)',
 
   marginTop: '2.5rem',
-  paddingBottom: '5rem',
+  paddingBottom: '3rem',
 
   overflowY: 'scroll',
 
