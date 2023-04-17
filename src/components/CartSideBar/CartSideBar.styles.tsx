@@ -38,6 +38,10 @@ export const Container = styled('aside', {
   defaultVariants: {
     visibility: 'hidden',
   },
+
+  '@sm1': {
+    padding: '2rem',
+  },
 })
 
 export const CloseButton = styled('button', {
@@ -107,6 +111,10 @@ export const ItemsContainer = styled('div', {
 
   scrollbarWidth: 'thin',
   scrollbarColor: '$gray300',
+
+  '@sm1': {
+    maxHeight: 'calc(100vh - 18rem)',
+  },
 })
 
 export const OrderSummary = styled('footer', {
@@ -123,6 +131,11 @@ export const OrderSummary = styled('footer', {
 
   backgroundColor: '$gray800',
   boxShadow: '4px 0px 30px rgba(0, 0, 0, 0.8)',
+
+  '@sm1': {
+    padding: '2rem',
+    gap: '3rem',
+  },
 })
 
 export const OrderDetails = styled('div', {
