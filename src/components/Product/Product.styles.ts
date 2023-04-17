@@ -92,6 +92,10 @@ export const Container = styled('div', {
     },
   },
 
+  '@media(max-height: 800px)': {
+    height: 'calc(100vh - 20vh)',
+  },
+
   '@md1': {
     minWidth: '35rem',
     height: 'auto',
@@ -110,10 +114,6 @@ export const Container = styled('div', {
       padding: '0',
       marginBottom: '6rem',
     },
-  },
-
-  '@media(max-height: 700px)': {
-    height: 'auto',
   },
 
   '@sm1': {

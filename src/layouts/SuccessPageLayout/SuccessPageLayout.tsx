@@ -20,7 +20,7 @@ export const SuccessPageLayout = ({ products = [], userName = '' }: SuccessPageL
     <Container>
       <Wrapper>
         <TShirts>
-          {products.map(({ image = '', id = '' }) => (
+          {products.slice(0, 3).map(({ image = '', id = '' }) => (
             <TShirt key={id}>
               <Image src={image} alt="" width={140} height={140} />
             </TShirt>

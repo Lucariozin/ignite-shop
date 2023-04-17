@@ -8,7 +8,7 @@ export const Container = styled('div', {
   justifyContent: 'center',
 
   minHeight: 'calc(100vh - 7.75rem)',
-  padding: '0 1.5rem 7.75rem',
+  padding: '0 1.5rem 0',
 })
 
 export const Wrapper = styled('main', {
@@ -32,6 +32,16 @@ export const TShirt = styled('div', {
   borderRadius: '50%',
   background: 'linear-gradient(180deg, #1EA483 0%, #7465D4 100%)',
   boxShadow: '0 0 60px rgba(0, 0, 0, 0.8)',
+
+  '@sm1': {
+    width: '7rem',
+    height: '7rem',
+
+    '& > img': {
+      width: '100%',
+      height: '100%',
+    },
+  },
 })
 
 export const TShirts = styled('div', {
@@ -40,6 +50,10 @@ export const TShirts = styled('div', {
 
   [`${TShirt} + ${TShirt}`]: {
     marginLeft: '-3.2rem',
+
+    '@sm1': {
+      marginLeft: '-2.8rem',
+    },
   },
 })
 
@@ -48,6 +62,10 @@ export const Title = styled('h1', {
   color: '$gray100',
 
   marginTop: '1.5rem',
+
+  '@sm1': {
+    fontSize: '1.5rem',
+  },
 })
 
 export const Text = styled('p', {
@@ -59,6 +77,10 @@ export const Text = styled('p', {
 
   maxWidth: '36.875rem',
   marginBottom: '2rem',
+
+  '@sm1': {
+    fontSize: '1.125rem',
+  },
 })
 
 export const GoHomeAnchor = styled(Link, {
@@ -72,5 +94,9 @@ export const GoHomeAnchor = styled(Link, {
 
   '&:hover, &:focus-visible': {
     color: '$green400',
+  },
+
+  '@sm1': {
+    fontSize: '1rem',
   },
 })
