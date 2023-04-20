@@ -8,7 +8,7 @@ export const ClientToastContainer = () => {
   return (
     <ToastContainer
       position="bottom-center"
-      autoClose={5000}
+      autoClose={4000}
       hideProgressBar
       newestOnTop={false}
       closeOnClick={false}
@@ -17,6 +17,10 @@ export const ClientToastContainer = () => {
       draggable
       pauseOnHover
       theme="dark"
+      style={{
+        maxWidth: '40rem',
+        width: '100%',
+      }}
     />
   )
 }
