@@ -9,6 +9,7 @@ import { getCssText } from '@/styles/stitches.config'
 import { StyleSheet } from '@/styles/StyleSheet'
 
 import { Header } from '@/components/Header'
+import { ClientToastContainer } from '@/components/ClientToastContainer'
 
 const roboto = Roboto({
   subsets: ['latin'],
@@ -33,6 +34,8 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
 
           {children}
         </CartProvider>
+
+        <ClientToastContainer />
       </body>
     </html>
   )

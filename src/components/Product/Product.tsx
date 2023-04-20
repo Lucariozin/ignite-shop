@@ -1,6 +1,9 @@
 import Image from 'next/image'
 
 import { useRouter } from 'next/navigation'
+
+import { message } from '@/utils/message'
+
 import { useCart } from '@/contexts/Cart'
 
 import { CartButton } from '@/components/CartButton'
@@ -22,6 +25,8 @@ export const Product = ({ id = '', name = '', price = 0, priceId = '', image = '
 
   const handleAddProductToCart = () => {
     addProductToCart({ priceId, productId: id, productName: name, productPrice: price, productImage: image })
+
+    message('Olha o teste!')
   }
 
   const handleProductClick = () => router.push(`/products/${id}`)
