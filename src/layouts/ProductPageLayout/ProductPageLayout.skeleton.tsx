@@ -8,7 +8,7 @@ export const ProductPageLayoutSkeleton = () => {
   return (
     <Container>
       <Wrapper>
-        <Skeleton width="100%" height="41rem" borderRadius="8px" />
+        <Skeleton width="100%" height="41rem" borderRadius="8px" css={{ '@sm1': { height: '30rem' } }} />
 
         <RightColumn>
           <ProductDetails>

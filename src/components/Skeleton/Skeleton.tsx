@@ -2,9 +2,11 @@ import { CSSProperties } from '@stitches/react'
 
 import { styled, keyframes } from '@/styles/stitches.config'
 
-interface SkeletonProps extends CSSProperties {}
+interface SkeletonProps extends CSSProperties {
+  css?: CSSProperties | any
+}
 
-export const Skeleton = (props: SkeletonProps) => {
+export const Skeleton = ({ css, ...props }: SkeletonProps) => {
   const Flashing = keyframes({
     '0%': {
       backgroundColor: '$gray700',
@@ -26,5 +28,5 @@ export const Skeleton = (props: SkeletonProps) => {
     ...props,
   })
 
-  return <Container />
+  return <Container css={css} />
 }
