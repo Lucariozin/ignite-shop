@@ -1,6 +1,9 @@
 'use client'
 
-import { RefObject, useCallback, useRef, useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { RefObject, useCallback, useEffect, useRef, useState } from 'react'
+
+import { toast } from 'react-toastify'
 
 import type { Product as ProductType } from '@/services/http/api/types'
 
@@ -14,6 +17,9 @@ interface HomeLayoutProps {
 }
 
 export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
+  const searchParams = useSearchParams()
+  const checkoutFailed = searchParams.get('failed') === 'true'
+
   const screenWidth = window?.screen?.width ?? 0
 
   const [carouselIsNavigating, setCarouselIsNavigating] = useState(false)
@@ -71,6 +77,12 @@ export const HomeLayout = ({ products = [] }: HomeLayoutProps) => {
 
     setTimeout(() => setCarouselIsNavigating(false), 500)
   }, [carouselIsNavigating, itemsQuantity, screenWidth])
+
+  useEffect(() => {
+    if (!checkoutFailed) return
+
+    toast.error('Compra cancelada')
+  }, [checkoutFailed])
 
   const thereAreProducts = !!products.length
 
