@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import { toast } from 'react-toastify'
+
 import {
   ItemName,
   Container,
@@ -27,6 +29,8 @@ export const CartItem = ({
 }: CartItemProps) => {
   const handleRemoveProductFromCart = () => {
     removeProductFromCart({ productId })
+
+    toast.success(`Produto "${productName}" removido com sucesso`)
   }
 
   const formattedPrice = (productPrice / 100).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })
