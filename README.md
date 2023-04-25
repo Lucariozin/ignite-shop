@@ -13,3 +13,4 @@ Aplicação Front-end desenvolvida como um desafio proposto na trilha de ReactJS
 
 - ``NextJS``
 - ``TypeScript``
+- ``Stitches``
